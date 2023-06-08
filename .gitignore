@@ -194,6 +194,7 @@ pyrightconfig.json
 #Personal
 .venv
 __pycache__
+sandbox
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
 
