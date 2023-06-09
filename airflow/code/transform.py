@@ -18,7 +18,7 @@ class TransformTaxiData:
 
         df = df.sample(n=10000) #having memory troubles trying to run the entire dataset (more than 3 million rows), so will select a sample
 
-        #Reading the lookup table that will be usefull when creating the pickupp and dropoff location dimensions
+        #Reading a static lookup table that will be usefull when creating the pickupp and dropoff location dimensions
         lookup_table = pd.read_csv("airflow/code/auxiliary_data/zone_lookup.csv")
 
         #Transforming datetime from object to datetime
