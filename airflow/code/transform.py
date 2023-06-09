@@ -16,7 +16,7 @@ class TransformTaxiData:
     def create_fact_and_dimensions(self) -> dict:
         df = self.read_downloaded_data()
 
-        df = df.sample(n=10000) #having memory troubles trying to run the entire dataset (more than 3 million rows), so will select a sample
+        df = df.sample(n=10000) #having memory troubles trying to run the entire dataset (more than 3 million rows), so will select a random sample of 10k rows
 
         #Reading a static lookup table that will be usefull when creating the pickupp and dropoff location dimensions
         lookup_table = pd.read_csv("airflow/code/auxiliary_data/zone_lookup.csv")
