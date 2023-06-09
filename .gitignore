@@ -195,7 +195,7 @@ pyrightconfig.json
 .venv
 __pycache__
 sandbox
-data-with-luan-credentials.json
+/airflow/code/data-with-luan-credentials.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
 
