@@ -99,23 +99,25 @@ class TransformTaxiData:
 
         #Creating fact table
         logger.info(f"Creating fact_table")
-        fact_table = df.merge(rate_code_dim, left_on='trip_id', right_on='rate_code_id') \
-                    .merge(pickup_location_dim, left_on='trip_id', right_on='pickup_location_id') \
-                    .merge(dropoff_location_dim, left_on='trip_id', right_on='dropoff_location_id')\
-                    .merge(datetime_dim, left_on='trip_id', right_on='datetime_id') \
-                    .merge(payment_type_dim, left_on='trip_id', right_on='payment_type_id') \
+        print("df shape:", df.shape)
+        fact_table = df.merge(rate_code_dim, how='left', left_on='trip_id', right_on='rate_code_id') \
+                    .merge(pickup_location_dim, how='left', left_on='trip_id', right_on='pickup_location_id') \
+                    .merge(dropoff_location_dim, how='left', left_on='trip_id', right_on='dropoff_location_id')\
+                    .merge(datetime_dim, how='left', left_on='trip_id', right_on='datetime_id') \
+                    .merge(payment_type_dim, how='left', left_on='trip_id', right_on='payment_type_id') \
                     [['trip_id','VendorID', 'datetime_id', 'rate_code_id', 'store_and_fwd_flag',  
                     'passenger_count', 'trip_distance', 'pickup_location_id', 'dropoff_location_id',
                     'payment_type_id', 'fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount',
                     'improvement_surcharge', 'total_amount', 'congestion_surcharge', 'Airport_fee']]
+        print("fact shape:", fact_table.shape)
         
         return {
-            'datetime_dim':datetime_dim.to_dict(orient='dict'),
-            'rate_code_dim':rate_code_dim.to_dict(orient='dict'),
-            'pickup_location_dim':pickup_location_dim.to_dict(orient='dict'),
-            'dropoff_location_dim':dropoff_location_dim.to_dict(orient='dict'),
-            'payment_type_dim':payment_type_dim.to_dict(orient='dict'),
-            'fact_table':fact_table.to_dict(orient='dict')
+            'datetime_dim':datetime_dim,
+            'rate_code_dim':rate_code_dim,
+            'pickup_location_dim':pickup_location_dim,
+            'dropoff_location_dim':dropoff_location_dim,
+            'payment_type_dim':payment_type_dim,
+            'fact_table':fact_table
         }
 
-TransformTaxiData().create_fact_and_dimensions()
+#TransformTaxiData().create_fact_and_dimensions()
