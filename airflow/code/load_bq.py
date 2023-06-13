@@ -42,4 +42,4 @@ class LoadToBQ:
             logger.info(f"{df_name} loaded to BigQuery!")
 
 data = TransformTaxiData().create_fact_and_dimensions()
-#LoadToBQ(data).load()
+LoadToBQ(data).load()
