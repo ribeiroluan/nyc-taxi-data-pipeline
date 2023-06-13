@@ -16,8 +16,6 @@ class TransformTaxiData:
     def create_fact_and_dimensions(self) -> dict:
         df = self.read_downloaded_data()
 
-        #df = df.sample(n=10000) #having memory troubles trying to run the entire dataset (more than 3 million rows), so will select a random sample of 10k rows
-
         #Reading a static lookup table that will be usefull when creating the pickupp and dropoff location dimensions
         lookup_table = pd.read_csv("airflow/code/auxiliary_data/zone_lookup.csv")
 
@@ -111,8 +109,6 @@ class TransformTaxiData:
                     'trip_distance', 'fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount',
                     'improvement_surcharge', 'total_amount', 'congestion_surcharge', 'Airport_fee']]
         
-        print("fact shape:", fact_table.shape)
-        
         return {
             'datetime_dim':datetime_dim,
             'rate_code_dim':rate_code_dim,
@@ -121,5 +117,3 @@ class TransformTaxiData:
             'payment_type_dim':payment_type_dim,
             'fact_table':fact_table
         }
-
-#TransformTaxiData().create_fact_and_dimensions()

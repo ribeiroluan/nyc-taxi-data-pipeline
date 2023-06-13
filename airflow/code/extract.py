@@ -45,4 +45,3 @@ class ExtractTaxiData:
         local_filename = self.filename()
         open(local_filename, 'wb').write(self._get_latest_dataset().content)
         logger.info(f"Data written to {local_filename}")
-#ExtractTaxiData().writer()
