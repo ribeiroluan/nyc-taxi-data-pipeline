@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 class LoadToBQ:
+    
     def __init__(self, data:dict):
         self.data = data
 
