@@ -23,6 +23,3 @@ class LoadToBQ:
                 credentials=self._get_bq_credentials()
             )
             logger.info(f"{df_name} loaded to BigQuery!")
-
-data = TransformTaxiData().create_fact_and_dimensions()
-LoadToBQ(data).load()
