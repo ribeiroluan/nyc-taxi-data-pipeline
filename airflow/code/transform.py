@@ -107,8 +107,8 @@ class TransformTaxiData:
                     .merge(payment_type_dim, how='left', left_on='payment_type', right_on='payment_type_id')
                     
         fact_table = fact_table[['trip_id','VendorID', 'datetime_id', 'rate_code_id', 'store_and_fwd_flag',  
-                    'passenger_count', 'trip_distance', 'pickup_location_id', 'dropoff_location_id',
-                    'payment_type_id', 'fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount',
+                    'pickup_location_id', 'dropoff_location_id', 'payment_type_id', 'passenger_count', 
+                    'trip_distance', 'fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount',
                     'improvement_surcharge', 'total_amount', 'congestion_surcharge', 'Airport_fee']]
         
         print("fact shape:", fact_table.shape)
