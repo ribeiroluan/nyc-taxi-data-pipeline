@@ -1,5 +1,6 @@
 import sys
-sys.path.append('nyc_taxi/airflow/code/')
+sys.path.append('/airflow/code/')
+
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
