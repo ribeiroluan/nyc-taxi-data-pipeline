@@ -9,7 +9,6 @@ class TransformTaxiData:
 
     def read_downloaded_data(self) -> pd.DataFrame:
         obj = ExtractTaxiData()
-        obj.writer #downloading dataset
         data = pd.read_parquet(obj.filename, engine="fastparquet") #reading dataset as a Pandas datafram
         return data
     
@@ -17,7 +16,7 @@ class TransformTaxiData:
         df = self.read_downloaded_data()
 
         #Reading a static lookup table that will be usefull when creating the pickupp and dropoff location dimensions
-        lookup_table = pd.read_csv("airflow/code/auxiliary_data/zone_lookup.csv")
+        lookup_table = pd.read_csv("/opt/airflow/code/auxiliary_data/zone_lookup.csv")
 
         #Transforming datetime from object to datetime
         df['tpep_pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime'])

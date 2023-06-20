@@ -13,7 +13,7 @@ class LoadToBQ:
         self.data = data
 
     def _get_bq_credentials(self):
-        return service_account.Credentials.from_service_account_file('airflow/code/data-with-luan-credentials.json')
+        return service_account.Credentials.from_service_account_file('/opt/airflow/code/data-with-luan-credentials.json')
 
     def load(self):
         for df_name, df in self.data.items():
