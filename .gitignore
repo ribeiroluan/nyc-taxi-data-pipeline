@@ -200,3 +200,4 @@ sandbox
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
 
+airflow/logs/scheduler/latest
