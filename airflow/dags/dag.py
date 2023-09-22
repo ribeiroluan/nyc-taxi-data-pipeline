@@ -26,21 +26,3 @@ with DAG(
         bash_command = "python /opt/airflow/code/main.py",
         dag = dag
     )
-
-
-    # extract_task = PythonOperator(
-    #     task_id = "extract-taxi-data",
-    #     python_callable = extract.ExtractTaxiData().writer(),
-    #     dag=dag)
-    
-    # transform_task = PythonOperator(
-    #     task_id = "transform-taxi-data",
-    #     python_callable = transform.TransformTaxiData().create_fact_and_dimensions(),
-    #     dag=dag)
-    
-    # load_to_bq_task = PythonOperator(
-    #     task_id = "load-taxi-data-to_bq",
-    #     python_callable = load_bq.LoadToBQ().create_fact_and_dimensions(),
-    #     dag=dag)
-    
-    # extract_task > transform_task > load_to_bq_task
